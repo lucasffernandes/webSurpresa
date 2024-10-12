@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa Romântica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #margintop {
+            margin-top: 10px;
+        }
+        #marginbottom {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Seção de Boas-vindas -->
+    <header>
+        <h1>Surpresa para Minha Querida Esposa</h1>
+        <p>Porque cada momento ao seu lado é mágico.</p>
+    </header>
+
+    <section class="music">
+        <button id="playMusicBtn">Ativar Música</button>
+        <audio id="bgMusic">
+            <source src="midia/brunoMars.mp3" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </section>
+
+    <!-- Linha do Tempo -->
+    <section class="timeline">
+        <h2 id="margintop">Nossa Jornada Juntos</h2>
+        <div class="event">
+            <h3>Primeiro Encontro</h3>
+            <p>Quando nos vimos pela primeira vez, em 2018...</p>
+            <img src="imagens/primeiroEncontro.jpg" alt="Momento especial 2" class="galeria-img">
+        </div>
+        <div class="event">
+            <h3>Vamos andar um pouco?</h3>
+            <p>Lembra?</p>
+            <img src="imagens/primeiroEncontro02.jpg" alt="Momento especial 3" class="galeria-img">
+        </div>
+    </section>
+
+    
+    <!-- Galeria de Fotos -->
+    <!-- Galeria de Fotos Responsiva -->
+    <section class="gallery">
+        <h2>Momentos Inesquecíveis</h2>
+        <div class="gallery-box">
+            <div class="photo-container">
+                <img src="imagens/imagem02.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem03.jpg" alt="Momento especial 3" class="galeria-img">
+                <img src="imagens/imagem04.jpg" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/imagem05.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem06.jpg" alt="Momento especial 3" class="galeria-img">
+                <img src="imagens/imagem07.jpg" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/imagem08.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem09.jpg" alt="Momento especial 3" class="galeria-img">
+                <img src="imagens/imagem10.jpg" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/imagem11.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem12.jpg" alt="Momento especial 3" class="galeria-img">
+                <img src="imagens/imagem13.jpg" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/imagem15.jpg" alt="Momento especial 3" class="galeria-img">
+                <img src="imagens/imagem16.jpg" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/imagem17.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem14.jpg" alt="Momento especial 2" class="galeria-img">
+                <img src="imagens/imagem01.png" alt="Momento especial 1" class="galeria-img">
+                <img src="imagens/montagem.jpg" alt="Momento especial 3" class="galeria-img">
+            </div>
+        </div>
+    </section>
+
+        <!-- Modal da Galeria -->
+        <div id="modalGaleria" class="modal">
+            <span class="fechar-modal">&times;</span>
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="Foto Ampliada">
+            </div>
+        </div>
+
+    <!-- Música de Fundo (opcional) -->
+
+<section class="special-message">
+    <h2 id="marginbottom">Uma Surpresa para Você</h2>
+    <button id="marginbottom" onclick="revealVideo()">Clique para ver a surpresa!</button>
+    <div id="hiddenVideo" style="display: none;">
+        <div class="video-container">
+            <video controls loop preload="auto">
+                <source src="midia/video.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+        </div>
+    </div>
+</section>
+
+
+    <script>
+        // Exibe o vídeo surpresa
+        function revealVideo() {
+            document.getElementById("hiddenVideo").style.display = "block";
+        }
+
+        // Função para abrir a imagem no modal da galeria
+        const galeriaImgs = document.querySelectorAll('.galeria-img');
+        const modal = document.getElementById('modalGaleria');
+        const modalImg = document.getElementById('modalImage');
+        const fecharModal = document.querySelector('.fechar-modal');
+
+        galeriaImgs.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+            });
+        });
+
+        // Fecha o modal ao clicar no botão de fechar
+        fecharModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Fecha o modal ao clicar fora da imagem
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Reproduz o áudio quando o botão é clicado
+        document.getElementById("playMusicBtn").addEventListener("click", function() {
+            const audio = document.getElementById("bgMusic");
+            audio.play();
+            this.style.display = "none"; // Oculta o botão após a reprodução do áudio começar
+        });
+    </script>
+
+</body>
+</html>
